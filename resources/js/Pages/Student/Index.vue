@@ -1,23 +1,27 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
+
+defineProps({
+    students: Object,
+});
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head title="Alunos" />
 
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
+                Alunos
             </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div
-                    class="bg-white overflow-hidden shadow-sm sm:rounded-lg"
-                ></div>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 text-gray-900">{{ students }}</div>
+                </div>
             </div>
         </div>
     </AuthenticatedLayout>
