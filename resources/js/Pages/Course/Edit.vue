@@ -36,11 +36,7 @@ const handleDeleteClickButton = () => {
                         Depois que o curso for excluído, os seus recursos e
                         dados serão excluídos permanentemente.
                     </p>
-                    <DangerButton
-                        class="text-red-600 hover:underline"
-                        tabindex="-1"
-                        type="button"
-                        @click="handleDeleteClickButton"
+                    <DangerButton tabindex="-1" @click="handleDeleteClickButton"
                         >Deletar Curso</DangerButton
                     >
                 </div>

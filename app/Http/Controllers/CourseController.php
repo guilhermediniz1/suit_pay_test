@@ -4,12 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Carbon\Carbon;
-use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
-use Inertia\Response;
 
 class CourseController extends Controller
 {

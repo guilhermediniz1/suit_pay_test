@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link } from "@inertiajs/vue3";
-import { Inertia } from "@inertiajs/inertia";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
 
 defineProps({
     courses: Object,
@@ -20,8 +20,10 @@ defineProps({
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="py-2 flex">
-                    <Link href="/courses/create">Adicionar Curso</Link>
+                <div class="py-3 flex justify-end">
+                    <Link href="/courses/create">
+                        <PrimaryButton> Adicionar Curso </PrimaryButton>
+                    </Link>
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
@@ -82,7 +84,7 @@ defineProps({
                                 </tr>
                                 <tr v-if="courses.length === 0">
                                     <td class="px-6 py-4 border-t" colspan="4">
-                                        No courses found.
+                                        Nenhum curso encontrado
                                     </td>
                                 </tr>
                             </tbody>
