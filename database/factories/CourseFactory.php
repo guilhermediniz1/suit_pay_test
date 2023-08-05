@@ -17,9 +17,9 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word,
+            'name' => $this->faker->sentence(4),
             'is_online' => $this->faker->boolean,
-            'enrollment_deadline' => $this->faker->dateTimeBetween('now', '+30 days'),
+            'enrollment_deadline' => $this->faker->dateTimeBetween('-30 days', '+30 days'),
             'vacancies' => $this->faker->randomNumber(2),
         ];
     }

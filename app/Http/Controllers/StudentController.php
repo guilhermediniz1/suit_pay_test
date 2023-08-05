@@ -39,6 +39,7 @@ class StudentController extends Controller
             'student' => [
                 'id' => $student->id,
                 'name' => $student->name,
+                'enrollments' => $student->enrollments()->with('course')->get()
             ]
         ]);
     }

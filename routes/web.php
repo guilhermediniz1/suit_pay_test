@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +76,17 @@ Route::put('students/{student}', [StudentController::class, 'update'])
 
 Route::delete('students/{student}', [StudentController::class, 'destroy'])
     ->name('students.destroy')
+    ->middleware('auth');
+
+
+// Enrollment
+
+Route::post('enrollments', [EnrollmentController::class, 'store'])
+    ->name('enrollments.store')
+    ->middleware('auth');
+
+Route::delete('enrollments/{enrollment}', [EnrollmentController::class, 'destroy'])
+    ->name('enrollments.destroy')
     ->middleware('auth');
 
 

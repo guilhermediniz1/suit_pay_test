@@ -4,6 +4,8 @@ import { Head } from "@inertiajs/vue3";
 import { Inertia } from "@inertiajs/inertia";
 import UpdateStudentForm from "./Partials/UpdateStudentForm.vue";
 import DangerButton from "@/Components/DangerButton.vue";
+import EnrollmentList from "./Partials/EnrollmentList.vue";
+import CreateEnrollmentForm from "./Partials/CreateEnrollmentForm.vue";
 
 const props = defineProps({
     student: Object,
@@ -22,7 +24,7 @@ const handleDeleteClickButton = () => {
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Editar "{{ props.student.name }}"
+                Editar Aluno "{{ props.student.name }}"
             </h2>
         </template>
 
@@ -34,6 +36,12 @@ const handleDeleteClickButton = () => {
                             :student="props.student"
                             class="max-w-xl"
                         />
+                    </div>
+                    <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                        <EnrollmentList
+                            :enrollments="props.student.enrollments"
+                        />
+                        <CreateEnrollmentForm :student="props.student" />
                     </div>
                     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <p class="mb-4 text-sm max-w-xl text-gray-600">

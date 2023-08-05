@@ -22,7 +22,7 @@ const handleDeleteClickButton = () => {
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Editar "{{ props.course.name }}"
+                Editar Curso "{{ props.course.name }}"
             </h2>
         </template>
 
