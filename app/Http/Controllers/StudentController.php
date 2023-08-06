@@ -13,7 +13,7 @@ class StudentController extends Controller
     public function index()
     {
         return Inertia::render('Student/Index', [
-            'students' => Student::all()
+            'students' => Student::paginate(10)->withQueryString()
         ]);
     }
 

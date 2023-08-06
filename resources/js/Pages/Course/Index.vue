@@ -2,10 +2,12 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link } from "@inertiajs/vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import Pagination from "@/Components/Pagination.vue";
 
 defineProps({
     courses: Object,
 });
+
 </script>
 
 <template>
@@ -42,7 +44,7 @@ defineProps({
                             </thead>
                             <tbody>
                                 <tr
-                                    v-for="course in courses"
+                                    v-for="course in courses.data"
                                     :key="course.id"
                                     class="hover:bg-gray-100 focus-within:bg-gray-100"
                                 >
@@ -91,6 +93,7 @@ defineProps({
                         </table>
                     </div>
                 </div>
+                <Pagination :links="courses.links" />
             </div>
         </div>
     </AuthenticatedLayout>

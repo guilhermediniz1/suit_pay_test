@@ -2,6 +2,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link } from "@inertiajs/vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import Pagination from "@/Components/Pagination.vue";
 
 defineProps({
     students: Object,
@@ -36,7 +37,7 @@ defineProps({
                             </thead>
                             <tbody>
                                 <tr
-                                    v-for="student in students"
+                                    v-for="student in students.data"
                                     :key="student.id"
                                     class="hover:bg-gray-100 focus-within:bg-gray-100"
                                 >
@@ -67,6 +68,7 @@ defineProps({
                         </table>
                     </div>
                 </div>
+                <Pagination :links="students.links" />
             </div>
         </div>
     </AuthenticatedLayout>

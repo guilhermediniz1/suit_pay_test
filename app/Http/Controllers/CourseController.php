@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -12,16 +13,16 @@ class CourseController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Course/Index', [ 
-            'courses' => Course::all()->map(function ($course) {
-                return [
+        return Inertia::render('Course/Index', [
+            'courses' => Course::paginate(10)
+                ->withQueryString()
+                ->through(fn($course) => [
                     'id' => $course->id,
-                    'name' => $course->name, 
+                    'name' => $course->name,
                     'is_online' => $course->is_online == 1 ? 'Sim' : 'Não',
                     'enrollment_deadline' => Carbon::parse($course->enrollment_deadline)->format('j/m/Y'),
                     'vacancies' => $course->vacancies
-                ];
-            })
+                ])
         ]);
     }
 
@@ -39,7 +40,7 @@ class CourseController extends Controller
     {
         Course::create(
             Request::validate([
-                'name' => ['required', 'string'], 
+                'name' => ['required', 'string'],
                 'is_online' => ['required', 'boolean'],
                 'enrollment_deadline' => ['required', 'date', 'after:yesterday'],
                 'vacancies' => ['required', 'int', 'min:0']
@@ -54,7 +55,7 @@ class CourseController extends Controller
         return Inertia::render('Course/Edit', [
             'course' => [
                 'id' => $course->id,
-                'name' => $course->name, 
+                'name' => $course->name,
                 'is_online' => $course->is_online,
                 'enrollment_deadline' => $course->enrollment_deadline,
                 'vacancies' => $course->vacancies
@@ -66,7 +67,7 @@ class CourseController extends Controller
     {
         $course->update(
             Request::validate([
-                'name' => ['required', 'string'], 
+                'name' => ['required', 'string'],
                 'is_online' => ['required', 'boolean'],
                 'enrollment_deadline' => ['required', 'date', 'after:yesterday'],
                 'vacancies' => ['required', 'int', 'min:0']
