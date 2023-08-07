@@ -87,6 +87,14 @@ Agora você pode acessar o aplicativo em seu navegador através do endereço:
 http://localhost:8000
 ```
 
+O login e senha de acesso gerado pelo Seeder são:
+
+```bash
+admin@admin.com
+
+password
+```
+
 Agora você está pronto para começar a trabalhar no projeto em sua máquina local!
 
 ## Encerrando o Desenvolvimento
